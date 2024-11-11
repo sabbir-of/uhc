@@ -1,0 +1,43 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches:
+      - main  # Replace with your default branch if different
+  pull_request:
+    branches:
+      - main  # Enable tests on pull requests to main
+
+jobs:
+  build:
+    runs-on: windows-2019  # You can specify the OS here
+
+    steps:
+      - uses: actions/checkout@v2  # Checks-out your repository
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18'  # Specify the Node.js version
+
+      - name: Install dependencies
+        run: npm ci  # Install dependencies including Playwright
+
+      - name: Run Playwright tests
+        run: npm run test  # Replace with your test script
+
+
+      - name: copy contents of playwright-report
+        if: always()
+        run: |
+          mkdir -p generated-report
+          cp -r ${{ github.workspace }}/playwright-report/* generated-report/
+
+      - name: Publish HTML report
+        if: always()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: generated-report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

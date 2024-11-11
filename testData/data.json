@@ -1,0 +1,87 @@
+{
+   "first_names": [
+    "Mariusz",
+    "Marek",
+    "Robert",
+    "Marcin",
+    "Przemek",
+    "Adam",
+    "Grzegorz",
+    "Adrian",
+    "Piotr",
+    "Paweł"
+  ],
+  "last_names": [
+    "Podgorski",
+    "Pawłowski",
+    "Kowalski",
+    "Marcinkiewicz",
+    "Macierewicz",
+    "Tyszka",
+    "Duda",
+    "Kornhauzer",
+    "Goldfinger",
+    "Wiśniewski",
+    "Lewandowski"
+  ],
+  "department": [
+    "Production",
+    "Sale",
+    "supply",
+    "warehouse",
+    "management",
+    "bookkeeping",
+    "HR"
+  ],
+  "position": [
+    "Manager",
+    "Director",
+    "Specialist",
+    "Assistant",
+    "Accountant",
+    "Secretary",
+    "Consultant",
+    "Supervisor",
+    "Coordinator",
+    "Administrator"
+  ],
+  "email": [
+    "gmail.com",
+    "yahoo.com",
+    "wp.pl",
+    "onet.pl",
+    "interia.pl",
+    "o2.pl"
+  ],
+  "phone": [
+    "123456789",
+    "987654321",
+    "456789123",
+    "321654987",
+    "654987321",
+    "987321654",
+    "321987654",
+    "654321987",
+    "789654123",
+    "123789654"
+  ],
+  "welcomeText": [
+    "Welcome to our company",
+    "We are happy to see you",
+    "We are glad to have you here",
+    "We are happy to welcome you",
+    "We are happy to see you here",
+    "We are glad to see you here",
+    "We are happy to have you here",
+    "We are glad to welcome you",
+    "We are glad to have you here",
+    "We are happy to welcome you here"
+  ],
+  "getDescription": [
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+  ],
+  "time":[
+    "00",
+    "5000"
+  ]
+}

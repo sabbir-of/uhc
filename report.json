@@ -1,0 +1,155 @@
+{
+  "config": {
+    "configFile": "D:\\UnidevGo\\gh-pages\\uhc\\playwright.config.ts",
+    "rootDir": "D:/UnidevGo/gh-pages/uhc",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/UnidevGo/gh-pages/uhc/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "",
+        "name": "",
+        "testDir": "D:/UnidevGo/gh-pages/uhc",
+        "testIgnore": [],
+        "testMatch": [
+          "your.test.ts"
+        ],
+        "timeout": 3000000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.41.2",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests\\your.test.ts",
+      "file": "tests/your.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Login with valid user load page auth @auth",
+          "ok": true,
+          "tags": [
+            "auth"
+          ],
+          "tests": [
+            {
+              "timeout": 3000000,
+              "annotations": [
+                {
+                  "type": "InputText",
+                  "description": "Fill \":\" with the value: \"test\""
+                },
+                {
+                  "type": "InputPassword",
+                  "description": "Fill: \" with value: *****\""
+                },
+                {
+                  "type": "Button",
+                  "description": "Click: \"Log in\""
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 5013,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Get label",
+                      "duration": 57
+                    },
+                    {
+                      "title": "Fill \":\" with the value: \"test\"",
+                      "duration": 89
+                    },
+                    {
+                      "title": "Get label",
+                      "duration": 55
+                    },
+                    {
+                      "title": "Fill: \" with value: *****\"",
+                      "duration": 32
+                    },
+                    {
+                      "title": "Get label for the button",
+                      "duration": 1
+                    },
+                    {
+                      "title": "Click: \"Log in\"",
+                      "duration": 240
+                    }
+                  ],
+                  "startTime": "2024-11-11T13:27:15.999Z",
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\UnidevGo\\gh-pages\\uhc\\test-results\\tests-your-Login-with-valid-user-load-page-auth-auth\\test-finished-1.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "57da25a4953acb6d0cba-8fe4ea66e1538690015f",
+          "file": "tests/your.test.ts",
+          "line": 12,
+          "column": 6
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-11-11T13:27:15.258Z",
+    "duration": 6231.363,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

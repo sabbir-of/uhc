@@ -1,0 +1,44 @@
+{
+  "dev": {
+    "BASE_URL": "https://demoblaze.com/",
+    "ROUTE": "/admin/#/home/",
+    "USERNAME": "test",
+    "PASSWORD": "test",
+    "TEAMS_WEBHOOK": "",
+    "SLACK_WEBHOOK": "",
+    "ENVIRONMENT": "Testing",
+    "REPORT_LINK": "yourReportLink",
+    "PROJECT": "Your Project UI Automation",
+    "FROM_ADDRESS_MAIL": "demo@gmail.com",
+    "FROM_ADDRESS_PASSWORD": "asdf",
+    "TO_MAIL_ADDRESS": ["to@gmail.com","to1@gmail.com", "to3@gmail.com"]
+  },
+  "prod": {
+    "BASE_URL": "https://www.saucedemo.com",
+    "ROUTE": "/admin/#/home/",
+    "USERNAME": "standard_user",
+    "PASSWORD": "secret_sauce",
+    "TEAMS_WEBHOOK": "",
+    "SLACK_WEBHOOK": "",
+    "ENVIRONMENT": "Testing",
+    "REPORT_LINK": "yourReportLink",
+    "PROJECT": "Your Project UI Automation",
+    "FROM_ADDRESS_MAIL": "demo@gmail.com",
+    "FROM_ADDRESS_PASSWORD": "asdf",
+    "TO_MAIL_ADDRESS": ["to@gmail.com","to1@gmail.com", "to3@gmail.com"]
+  },
+  "stg": {
+    "BASE_URL": "https://www.saucedemo.com",
+    "ROUTE": "/admin/#/home/",
+    "USERNAME": "standard_user",
+    "PASSWORD": "secret_sauce",
+    "TEAMS_WEBHOOK": "",
+    "SLACK_WEBHOOK": "",
+    "ENVIRONMENT": "Testing",
+    "REPORT_LINK": "yourReportLink",
+    "PROJECT": "Your Project UI Automation",
+    "FROM_ADDRESS_MAIL": "demo@gmail.com",
+    "FROM_ADDRESS_PASSWORD": "asdf",
+    "TO_MAIL_ADDRESS": ["to@gmail.com","to1@gmail.com", "to3@gmail.com"]
+  }
+}
