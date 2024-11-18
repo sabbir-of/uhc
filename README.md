@@ -143,3 +143,70 @@ Playwright-Framework-Template - This project is based on Microsoft Playwright, w
 - `npx playwright test (name-of-file.spec.ts) --headed --config=playwright.config.firefox.ts` to run test in ui mode on firefox browser
 - `npx playwright test (name-of-file.spec.ts) --headed --config=playwright.config.edge.ts` to run test in ui mode on edge browser
 
+
+
+
+1. assertEqualSoft
+Allows soft assertions, enabling tests to continue running even if some assertions fail, useful for comprehensive validation in a single test run.
+2. authSetup
+Simplifies authentication setup by managing user sessions, tokens, or credentials for automated login workflows.
+3. clickHelper
+Provides enhanced click handling with retries or specific conditions, reducing flakiness in tests due to timing issues.
+4. waitForSelector
+Waits for an element to appear, ensuring synchronization between the UI and automation script.
+5. waitForLocator
+A robust alternative to waitForSelector, allowing dynamic interactions with more complex locators.
+6. ifElseClick
+Adds conditional logic for clicking elements based on their visibility or state, improving test adaptability.
+7. dblClick
+Simplifies double-click operations, particularly useful for interacting with elements requiring this action.
+8. waitForAllVideoToLoad
+Ensures that all video resources are fully loaded before proceeding, critical for multimedia-heavy applications.
+9. assertTextHelper
+Validates text content in a more streamlined manner, improving readability and maintainability of test scripts.
+10. inputTextHelper
+Simplifies text input with error handling, making forms and data entry testing more reliable.
+11. verifyElementColor
+Verifies CSS color properties, useful for UI/UX consistency checks.
+12. uploadImage / uploadVideo
+Streamlines file uploads by automating file chooser dialogs, reducing manual setup for test environments.
+13. clickActiveBtn
+Ensures only active or enabled buttons are clicked, preventing invalid interactions.
+14. waitForNetworkIdle
+Waits until no network activity occurs, ensuring all asynchronous operations are complete.
+15. waitForTimeout
+Introduces a pause in execution, useful for debugging or handling specific timing requirements.
+16. waitForAllResourceLoad
+Waits for all page resources to load, ensuring the page is fully rendered before interactions.
+17. waitForButtonEnabled
+Ensures buttons are enabled before interacting, reducing test failures due to premature actions.
+18. waitForPageApiLoad
+Verifies API responses are received before proceeding, crucial for validating data-driven components.
+19. verifyBackgroundVideo
+Confirms that a background video is loaded and playing correctly, critical for video-dependent features.
+20. compareFullPageScreenshot
+Compares full-page screenshots for visual regression, ensuring UI changes do not introduce unintended design issues.
+21. compareElementScreenshot
+Focuses on specific UI elements for precise visual regression testing.
+22. waitForButtonToBeEnabled
+Ensures buttons are interactable before performing actions, improving reliability in form and workflow tests.
+23. copyURLToClipboard
+Automates the process of copying URLs, useful for testing share functionality.
+24. clickNestedElement
+Enables interactions with deeply nested elements, simplifying complex DOM structures.
+25. handleCheckBox
+Automates checkbox interactions with state validation (checked/unchecked).
+26. expectToBeVisible / expectNotToBeVisible
+Provides readable, reusable assertions for verifying element visibility states.
+27. closeBrowserIfOpen
+Closes browser instances if already open, reducing conflicts during multiple test executions.
+28. downloadFile
+Automates file download validation, ensuring correct content and file handling workflows.
+
+
+General Benefits:
+Consistency: All helpers ensure consistent implementation of repetitive actions across tests.
+Readability: Test scripts become more readable and easier to understand.
+Reusability: Modular helpers allow code reuse, reducing duplication and improving maintainability.
+Flakiness Reduction: Many helpers address timing and synchronization issues, ensuring stable test runs.
+Scalability: Simplified scripts make scaling test coverage across scenarios and environments easier.
