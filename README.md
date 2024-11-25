@@ -145,3 +145,85 @@ Playwright-Framework-Template - This project is based on Microsoft Playwright, w
 
 
 
+
+
+
+Writing Tests in Playwright with TypeScript Using POM and Helper Functions
+
+🔧 Key Principles:
+
+Encapsulation:
+
+Use the Page Object Model (POM) to encapsulate locators like dealManagement in LoanPage for modularity and reusability.
+Helper Functions:
+
+Delegate actions like click, wait, and assertions to helper functions for better readability and maintainability.
+Descriptive Error Messages:
+
+Provide contextual error messages in helper functions ( Deal Management button is not visible) to improve debugging.
+Type Safety:
+
+Leverage TypeScript for strong typing to reduce runtime errors and enhance confidence in test code.
+
+
+
+📝 Implementation Guide
+
+1. Page Object Example
+
+Encapsulate locators in a dedicated page object:
+
+readonly dealManagement = page.locator(`[title="Deal Management"]`);
+
+ 
+
+2. Steps File Example
+
+Write reusable test steps using helper functions:
+
+Then('click on the Deal Management button', async ({ loanPage }) => {
+
+  await Helper.clickHelper(loanPage.dealManagement, { errorMessage: 'Deal Management button is not visible' });
+
+});
+
+ 
+
+3. Feature File Example
+
+Structure test scenarios using Gherkin syntax:
+
+@deal_management @loan
+
+Scenario Outline: The user should see a button at the top of the page labeled "Deal Management"
+
+  Given navigates to the Loan Route
+
+  When the user sees a button at the top of the page labeled "Deal Management"
+
+  Then clicks on the Deal Management button
+
+ 
+
+
+
+🚀 Benefits
+
+Maintainability:
+
+Update locators in one place (POM) if the UI changes.
+Reusability:
+
+Centralized locators and helper functions reduce redundancy.
+Readability:
+
+Steps and helpers make tests easy to read and follow.
+Error Debugging:
+
+Custom error messages improve debugging.
+Scalability:
+
+Structured code adapts to growing test suites.
+Separation of Concerns:
+
+Tests focus on logic; helpers handle Playwright-specific details.
