@@ -121,28 +121,21 @@ export class BasePage {
 
 
 
+import { Before, After } from '@cucumber/cucumber';
+import { chromium } from 'playwright';
 
-import { test as base } from 'playwright-bdd';
-import { Page, BrowserContext } from '@playwright/test';
+Before(async function ({ pickle }) {
+  // Set up the browser and context based on role
+  this.browser = await chromium.launch(); // Launch a new browser instance
+  const role = pickle.name.match(/as "(.*?)"/)?.[1]; // Extract role from the scenario name
+  this.context = await this.browser.newContext({ storageState: `storage/${role}.json` });
+  this.page = await this.context.newPage(); // Create a new page for the test scenario
+  console.log(`Set up browser for role: ${role}`);
+});
 
-type RoleTestFixtures = {
-  role: string;
-  page: Page;
-  context: BrowserContext;
-};
-
-export const test = base.extend<RoleTestFixtures>({
-  role: async ({}, use, testInfo) => {
-    const role = testInfo.title.match(/The\s(\w+)\s/)?.[1] ?? 'Guest'; // Extract role from title
-    await use(role);
-  },
-  context: async ({ browser }, use, role) => {
-    const storageStatePath = `path/to/${role.toLowerCase()}-storageState.json`; // Update paths
-    const context = await browser.newContext({ storageState: storageStatePath });
-    await use(context);
-  },
-  page: async ({ context }, use) => {
-    const page = await context.newPage();
-    await use(page);
-  },
+After(async function () {
+  // Cleanup after scenario
+  await this.page.close();
+  await this.context.close();
+  await this.browser.close(); // Close browser after the test
 });

@@ -1,30 +1,30 @@
-import { test as base, chromium, type ChromiumBrowserContext } from '@playwright/test';
-const fs = require('fs');
-const path = require('path');
-const userDirData = path.join(__dirname, '/tests/Data');
+// import { test as base, chromium, type ChromiumBrowserContext } from '@playwright/test';
+// const fs = require('fs');
+// const path = require('path');
+// const userDirData = path.join(__dirname, '/tests/Data');
 
-export const test = base.extend<{
-        context: ChromiumBrowserContext;
-        extensionId: string;
-}>({
-        context: async ({ }, use) => {
-                const context: ChromiumBrowserContext = await chromium.launchPersistentContext(userDirData, {
-                        headless: false,                        
-                });
-                await use(context);               
-                await context.close();
+// export const test = base.extend<{
+//         context: ChromiumBrowserContext;
+//         extensionId: string;
+// }>({
+//         context: async ({ }, use) => {
+//                 const context: ChromiumBrowserContext = await chromium.launchPersistentContext(userDirData, {
+//                         headless: false,                        
+//                 });
+//                 await use(context);               
+//                 await context.close();
 
                 
 
-        },
+//         },
 
 
 
 
-});
+// });
 
 
-export const expect = test.expect;
+// export const expect = test.expect;
 
 
 
@@ -42,3 +42,10 @@ export const expect = test.expect;
 //         // Optionally, close the browser context when done
 //         await context.close();
 //     }
+
+
+
+
+
+
+
