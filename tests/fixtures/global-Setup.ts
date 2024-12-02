@@ -1,51 +1,30 @@
-// import { test as base, chromium, type ChromiumBrowserContext } from '@playwright/test';
-// const fs = require('fs');
-// const path = require('path');
-// const userDirData = path.join(__dirname, '/tests/Data');
+import { chromium } from 'playwright';
 
-// export const test = base.extend<{
-//         context: ChromiumBrowserContext;
-//         extensionId: string;
-// }>({
-//         context: async ({ }, use) => {
-//                 const context: ChromiumBrowserContext = await chromium.launchPersistentContext(userDirData, {
-//                         headless: false,                        
-//                 });
-//                 await use(context);               
-//                 await context.close();
+async function generateStorageState(role: string, username: string, password: string) {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
 
-                
+  // Navigate to the login page
+  await page.goto('https://example.com/login');
 
-//         },
+  // Perform login
+  await page.fill('input[name="username"]', username);
+  await page.fill('input[name="password"]', password);
+  await page.click('button[type="submit"]');
+  
+  // Wait for navigation or page to load
+  await page.waitForNavigation();
 
+  // Save the storage state
+  await page.context().storageState({ path: `storageStates/${role}.json` });
 
+  await browser.close();
+}
 
-
-// });
-
-
-// export const expect = test.expect;
-
-
-
-// import { chromium, ChromiumBrowserContext } from '@playwright/test';
-
-// async function launchPersistentBrowser() {
-//         const userDataDir = './path/to/user/data/directory';
-//         const context: ChromiumBrowserContext = await chromium.launchPersistentContext(userDataDir, {
-//             headless: false, // Set to true if you don't need a GUI
-//             // Other options like viewport size, etc.
-//         });
-
-//         // Your code to interact with the browser goes here
-
-//         // Optionally, close the browser context when done
-//         await context.close();
-//     }
-
-
-
-
-
-
-
+// Generate storage states for multiple roles
+(async () => {
+  await generateStorageState('RM', 'rm_user', 'rm_password');
+  await generateStorageState('CLO', 'clo_user', 'clo_password');
+  await generateStorageState('Credit', 'credit_user', 'credit_password');
+  await generateStorageState('Admin', 'admin_user', 'admin_password');
+})();
