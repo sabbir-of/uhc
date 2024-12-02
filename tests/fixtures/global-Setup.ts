@@ -1,30 +1,62 @@
-import { chromium } from 'playwright';
+import { chromium, FullConfig } from '@playwright/test';
 
-async function generateStorageState(role: string, username: string, password: string) {
-  const browser = await chromium.launch();
-  const page = await browser.newPage();
+async function globalSetup(config: FullConfig) {
+  const { projects } = config;
 
-  // Navigate to the login page
-  await page.goto('https://example.com/login');
+  for (const project of projects) {
+    const role = project.name; // Assuming role matches project name (e.g., 'Admin', 'Credit')
+    const storageStatePath = `storage/${role}.json`;
 
-  // Perform login
-  await page.fill('input[name="username"]', username);
-  await page.fill('input[name="password"]', password);
-  await page.click('button[type="submit"]');
-  
-  // Wait for navigation or page to load
-  await page.waitForNavigation();
+    const browser = await chromium.launch();
+    const context = await browser.newContext();
+    const page = await context.newPage();
 
-  // Save the storage state
-  await page.context().storageState({ path: `storageStates/${role}.json` });
+    // Perform login for each role
+    switch (role) {
+      case 'Admin':
+        await page.goto('https://your-app.com/login');
+        await page.fill('input[name="username"]', 'admin_user');
+        await page.fill('input[name="password"]', 'admin_password');
+        break;
 
-  await browser.close();
+      case 'Credit':
+        await page.goto('https://your-app.com/login');
+        await page.fill('input[name="username"]', 'credit_user');
+        await page.fill('input[name="password"]', 'credit_password');
+        break;
+
+      case 'RM':
+        await page.goto('https://your-app.com/login');
+        await page.fill('input[name="username"]', 'rm_user');
+        await page.fill('input[name="password"]', 'rm_password');
+        break;
+
+      case 'Loan_Admin':
+        await page.goto('https://your-app.com/login');
+        await page.fill('input[name="username"]', 'loan_admin_user');
+        await page.fill('input[name="password"]', 'loan_admin_password');
+        break;
+
+      case 'CLO':
+        await page.goto('https://your-app.com/login');
+        await page.fill('input[name="username"]', 'clo_user');
+        await page.fill('input[name="password"]', 'clo_password');
+        break;
+
+      default:
+        console.error(`No login flow defined for role: ${role}`);
+        continue;
+    }
+
+    // Submit login and wait for confirmation
+    await page.click('button[type="submit"]');
+    await page.waitForURL('https://your-app.com/dashboard'); // Adjust based on successful login redirect
+
+    // Save the storage state for the role
+    await context.storageState({ path: storageStatePath });
+
+    await browser.close();
+  }
 }
 
-// Generate storage states for multiple roles
-(async () => {
-  await generateStorageState('RM', 'rm_user', 'rm_password');
-  await generateStorageState('CLO', 'clo_user', 'clo_password');
-  await generateStorageState('Credit', 'credit_user', 'credit_password');
-  await generateStorageState('Admin', 'admin_user', 'admin_password');
-})();
+export default globalSetup;
