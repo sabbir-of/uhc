@@ -112,3 +112,37 @@ export class BasePage {
         expect(expected, assertMessage).toEqual(actual);
     }
 }
+
+
+
+
+
+
+
+
+
+
+import { test as base } from 'playwright-bdd';
+import { Page, BrowserContext } from '@playwright/test';
+
+type RoleTestFixtures = {
+  role: string;
+  page: Page;
+  context: BrowserContext;
+};
+
+export const test = base.extend<RoleTestFixtures>({
+  role: async ({}, use, testInfo) => {
+    const role = testInfo.title.match(/The\s(\w+)\s/)?.[1] ?? 'Guest'; // Extract role from title
+    await use(role);
+  },
+  context: async ({ browser }, use, role) => {
+    const storageStatePath = `path/to/${role.toLowerCase()}-storageState.json`; // Update paths
+    const context = await browser.newContext({ storageState: storageStatePath });
+    await use(context);
+  },
+  page: async ({ context }, use) => {
+    const page = await context.newPage();
+    await use(page);
+  },
+});
